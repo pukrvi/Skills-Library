@@ -1,0 +1,242 @@
+/* =========================================================================
+   Generic Product Design System — Colors & Type
+   Extracted from generic product design tokens
+   and design-system/02-design-tokens.md.
+   ========================================================================= */
+
+/* Brand font — local Inter variable (covers 100–900, optical sizing 14–32) */
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Roboto Mono still from Google Fonts (not part of brand upload) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- Brand primary (blue) ---- */
+  --brand-brand-primary:        #2D81FF;   /* primary actions, links, active */
+  --brand-brand-primary-hover:  #61A0FF;
+  --brand-brand-secondary:      #72ABFF;
+  --brand-brand-secondary-hover:#9EC5FF;
+  --brand-brand-tertiary:       #EAF2FF;   /* tinted bg */
+  --brand-brand-tertiary-hover: #BED8FF;
+
+  /* ---- AI / AI assistant accent (purple) ---- */
+  --brand-ai-primary:           #8F00FF;
+  --brand-ai-secondary:         #D9CFFC;
+  --brand-ai-dark:              #67378D;
+
+  /* ---- Extended brand accents ---- */
+  --brand-accent-blue:          #1565C0;
+  --brand-accent-orange:        #DE7F10;
+  --brand-accent-red:           #FC5733;
+  --brand-complimentary-blue:   #0871ED;
+  --brand-complimentary-amber:  #CF842B;
+
+  /* ---- Nucleus gradient (top-of-app badge) ---- */
+  --brand-nucleus-gradient: linear-gradient(222.29deg, #4CC77C 3.97%, #408A68 75.4%, #B8E20D 123.36%);
+
+  /* ---- Gray scale (Ant Design based) ---- */
+  --gray-1: #FFFFFF;
+  --gray-2: #FAFAFA;
+  --gray-3: #F5F5F5;
+  --gray-4: #F0F0F0;
+  --gray-5: #D9D9D9;
+  --gray-6: #BFBFBF;
+  --gray-7: #8C8C8C;
+  --gray-8: #595959;
+  --gray-9: #262626;
+
+  /* ---- Text / foreground ---- */
+  --fg-0:        #121212;   /* heading darkest */
+  --fg-1:        #282828;   /* body default */
+  --fg-2:        #374151;   /* secondary body */
+  --fg-3:        #414141;   /* alt secondary */
+  --fg-4:        #444444;   /* labels, icons */
+  --fg-muted:    #AFAFAF;   /* hint / placeholder */
+  --fg-disabled: #B1B1B1;
+  --fg-link:     #3C98EE;
+  --fg-hyperlink:#1155CC;
+  --fg-on-primary: #FFFFFF;
+
+  /* ---- Background / surface ---- */
+  --bg-0:        #FFFFFF;   /* cards, modals */
+  --bg-1:        #FCFCFC;   /* page bg subtle */
+  --bg-2:        #F7F6F8;   /* card/section bg */
+  --bg-3:        #F5F5F5;   /* primary content bg */
+  --bg-4:        #F2F2F2;
+  --bg-selected: #EDF6FD;   /* selected item, nav active */
+  --bg-hover:    #F1F9F4;   /* hover state */
+
+  /* ---- Border ---- */
+  --border-1:    #DBDBDB;   /* primary border */
+  --border-2:    #E0E0E0;
+  --border-3:    #EAEAEA;   /* header/toolbar */
+  --border-4:    #E9E9E9;
+  --border-ant:  #D9D9D9;   /* ant design default */
+  --border-light:#F0F0F0;
+  --border-brand-tint: #EDE9EF;
+
+  /* ---- Semantic / status ---- */
+  --success:     #52C41A;
+  --warning:     #FAAD14;
+  --error:       #FF4D4F;
+  --pending:     #D48806;
+  --progress-low:    #E25A5A;
+  --progress-medium: #FAAB62;
+  --beta-bg:     #FFF4C6;
+
+  /* ---- Type: families ---- */
+  --font-sans: 'Inter', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Type: scale (px)
+         Upstream uses 10px rem-root, so 1.4rem === 14px.
+         We re-declare in px for direct use in component cards.            */
+  --fs-xxs:  8px;
+  --fs-xs:   10px;
+  --fs-sm:   12px;
+  --fs-base: 14px;
+  --fs-md:   16px;
+  --fs-lg:   18px;
+  --fs-xl:   20px;
+  --fs-xxl:  24px;
+  --fs-xxxl: 28px;
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.2;
+  --lh-normal:  1.4;
+  --lh-relaxed: 1.5;
+
+  /* ---- Weights ---- */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* ---- Spacing (used across app) ---- */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-12: 48px;
+
+  /* ---- Radius ---- */
+  --r-base: 4px;
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:   10px;
+  --r-xl:   12px;
+  --r-full: 9999px;
+
+  /* ---- Elevation (Kendo depth, ported) ---- */
+  --shadow-1: 0 0.3px 0.9px 0 #0000001a, 0 1.6px 3.6px 0 #00000021;
+  --shadow-2: 0 0.6px 1.8px 0 #0000001a, 0 3.2px 7.2px 0 #00000021;
+  --shadow-3: 0 0.9px 2.7px 0 #0000001a, 0 4.8px 10.8px 0 #00000021;
+  --shadow-4: 0 1.2px 3.6px 0 #0000001a, 0 6.4px 14.4px 0 #00000021;
+
+  /* ---- Layout primitives ---- */
+  --sidenav-w:      70px;
+  --sidenav-w-mob:  260px;
+  --toolbar-h:      64px;
+  --body-pad:       16px;
+}
+
+/* =========================================================================
+   Semantic element base styles
+   ========================================================================= */
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  background: var(--bg-3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1 {
+  font-size: var(--fs-xxl);       /* 24px */
+  line-height: 32px;
+  font-weight: var(--fw-semibold);
+  color: var(--fg-0);
+  letter-spacing: -0.01em;
+}
+
+h2, .h2 {
+  font-size: var(--fs-xl);        /* 20px */
+  line-height: 28px;
+  font-weight: var(--fw-semibold);
+  color: var(--fg-0);
+}
+
+h3, .h3 {
+  font-size: var(--fs-md);        /* 16px */
+  line-height: 24px;
+  font-weight: var(--fw-medium);
+  color: var(--fg-1);
+}
+
+h4, .h4 {
+  font-size: var(--fs-base);
+  line-height: 20px;
+  font-weight: var(--fw-semibold);
+  color: var(--fg-1);
+}
+
+p, .p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  margin: 0 0 var(--sp-3);
+}
+
+.caption {
+  font-size: var(--fs-sm);
+  line-height: 16px;
+  color: var(--fg-2);
+}
+
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+}
+
+.overline {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  font-weight: var(--fw-semibold);
+}
+
+a, .link {
+  color: var(--fg-link);
+  text-decoration: none;
+}
+a:hover { color: var(--brand-brand-primary); }
+
+code, kbd, pre, samp, .mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* Utility badges seen in product (BETA tag) */
+.beta-tag {
+  background: var(--beta-bg);
+  color: var(--fg-1);
+  font-size: 8px;
+  font-weight: var(--fw-bold);
+  padding: 0 3px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  line-height: 1.5;
+}

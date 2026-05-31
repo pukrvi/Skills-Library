@@ -1,0 +1,51 @@
+{
+  "skill_name": "full-cycle-rep-coaching",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to coach [rep name] - they're one of my mid-market AEs. Can you analyze their recent calls and tell me what they need to work on? Build me a coaching plan I can use in our 1:1 next week.",
+      "expected_output": "A structured coaching report with competency scores from transcript analysis, specific call evidence, identified strengths and gaps, matched training courses, and suggested 1:1 questions",
+      "files": [],
+      "expectations": [
+        "The skill resolves the rep name using the available user directory before searching meetings",
+        "The skill searches for meetings with has_transcript=true",
+        "At least 2 transcripts are fetched and analyzed",
+        "Each competency from the framework is scored with evidence",
+        "Talk-to-listen ratio is calculated",
+        "Strengths are identified with specific call examples",
+        "Growth areas are identified with specific call examples",
+        "Training courses or roleplays are recommended from the LMS catalog",
+        "The output includes suggested coaching questions for the 1:1",
+        "The skill asks for confirmation before assigning courses"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How is [rep name] doing on their calls? I noticed they've been losing deals at the negotiation stage and I want to understand why from their call recordings.",
+      "expected_output": "Analysis focused on identifying why deals are lost at negotiation — likely surfacing objection handling and value articulation gaps from transcripts, with targeted training recommendations",
+      "files": [],
+      "expectations": [
+        "The skill resolves the rep using the available user directory",
+        "Transcripts are analyzed with special attention to objection handling and negotiation moments",
+        "The analysis connects call behaviors to deal outcomes where possible",
+        "Specific moments where the rep struggled with negotiation are cited with timestamps",
+        "Training recommendations are relevant to the identified negotiation gaps",
+        "The coaching plan addresses the specific concern about losing deals at negotiation stage"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I'm prepping for my 1:1s this week. Can you give me a quick coaching snapshot for each of my reps - [rep A], [rep B], and [rep C]? Just the highlights - strengths, one thing to work on, and a conversation starter for each.",
+      "expected_output": "Concise coaching snapshots for 3 reps — each with a strength, a growth area, and a suggested conversation opener based on transcript evidence",
+      "files": [],
+      "expectations": [
+        "All three reps are resolved and analyzed",
+        "Each rep gets a distinct coaching snapshot",
+        "Each snapshot includes at least one strength with evidence",
+        "Each snapshot includes at least one growth area with evidence",
+        "Each snapshot includes a suggested conversation starter or coaching question",
+        "The output is concise and scannable — not a full report for each rep"
+      ]
+    }
+  ]
+}

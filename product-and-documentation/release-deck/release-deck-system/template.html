@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1920, initial-scale=1"/>
+<title>Product Updates</title>
+
+<link rel="stylesheet" href="colors_and_type.css"/>
+
+<style>
+  html, body { margin: 0; padding: 0; background: #000; }
+  .slide {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide * { box-sizing: border-box; }
+</style>
+
+<!--
+  Speaker notes — one string per slide, in the order <section>s appear below.
+  Delete this block if you don't need notes.
+-->
+<script type="application/json" id="speaker-notes">
+[
+  "Cover — welcome the audience and frame the month.",
+  "Overview — quick tour of the sections and what shipped.",
+  "Section divider — set up Section 1.",
+  "Feature 1 talking points.",
+  "Section divider — set up Section 2.",
+  "Feature 2 talking points.",
+  "Closing — hand it back to CSMs."
+]
+</script>
+</head>
+<body>
+
+<!--
+  ONE <section> per slide, in presentation order.
+  Section order MUST match the mount order in the <script> below.
+-->
+<deck-stage width="1920" height="1080">
+  <section data-label="Cover" id="s-cover"></section>
+  <section data-label="Overview" id="s-overview"></section>
+
+  <!-- For every section in release-data.js, add:
+       <section data-label="Section · XYZ" id="s-section-<id>"></section>
+       then one <section data-label="..." id="s-f-<feature.id>"></section> per feature
+  -->
+
+  <section data-label="Closing" id="s-closing"></section>
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+
+<!-- React + Babel (pinned) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Release content (edit this file every month) -->
+<script src="release-data.js"></script>
+
+<!-- System components -->
+<script type="text/babel" src="slide-components.jsx"></script>
+<script type="text/babel" src="slide-layouts.jsx"></script>
+
+<script type="text/babel">
+/* =========================================================================
+   MOUNT — auto-generates slide order from release-data.js
+   Each section renders: divider + one slide per feature.
+   You still need to add matching <section> elements above in the same order.
+   ========================================================================= */
+(function () {
+  const R = window.RELEASE;
+  const allFeatures = R.sections.flatMap(s => s.features.map(f => ({...f, _section: s})));
+  const totalCount = 1 + 1 + R.sections.length + allFeatures.length + 1;
+  let idx = 0;
+
+  const mount = (id, node) => {
+    idx += 1;
+    const el = document.getElementById(id);
+    if (!el) { console.warn('missing <section> for', id); return; }
+    ReactDOM.createRoot(el).render(node);
+  };
+
+  // Cover
+  mount('s-cover', <CoverSlide
+    month={R.month} year={R.year} tagline={R.tagline}
+    index={idx+1} total={totalCount} />);
+
+  // Overview
+  mount('s-overview', <OverviewSlide
+    sections={R.sections} tagline={R.overviewHeadline}
+    month={R.month} year={R.year} featuresCount={allFeatures.length}
+    index={idx+1} total={totalCount} />);
+
+  // Sections + features
+  R.sections.forEach((sec, si) => {
+    mount(`s-section-${sec.id}`, <SectionDividerSlide
+      number={si+1} title={sec.title}
+      index={idx+1} total={totalCount} />);
+    sec.features.forEach(f => {
+      mount(`s-f-${f.id}`, <FeatureSlide
+        category={f.category} title={f.title} summary={f.summary}
+        bullets={f.bullets} audience={f.audience} release={f.release}
+        screenshot={f.screenshot}
+        index={idx+1} total={totalCount} />);
+    });
+  });
+
+  // Closing
+  mount('s-closing', <ClosingSlide
+    month={`${R.month} ${R.year}`}
+    index={idx+1} total={totalCount} />);
+})();
+</script>
+
+</body>
+</html>

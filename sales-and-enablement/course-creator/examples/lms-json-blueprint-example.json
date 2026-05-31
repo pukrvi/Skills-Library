@@ -1,0 +1,87 @@
+{
+  "course": {
+    "title": "Enterprise Discovery Fundamentals",
+    "description": "A self-paced course for enterprise AEs to improve discovery quality by practicing impact-oriented follow-up questions.",
+    "category": "Sales Onboarding",
+    "target_audience": "New enterprise AEs",
+    "difficulty": "intermediate",
+    "estimated_duration_minutes": 65,
+    "delivery_format": "self_paced",
+    "settings": {
+      "sequential_learning": true,
+      "passing_percentage": 80,
+      "allow_retakes": true,
+      "max_retakes": 2,
+      "rating_and_feedback": true,
+      "content_download": false,
+      "certificates": false,
+      "reviewers": [
+        "manager"
+      ]
+    }
+  },
+  "modules": [
+    {
+      "module_title": "Discovery mindset",
+      "module_goal": "Understand why impact matters in discovery.",
+      "estimated_duration_minutes": 12,
+      "items": [
+        {
+          "type": "lesson",
+          "title": "Why surface pain is not enough",
+          "objective": "Explain the difference between pain and impact.",
+          "content_blocks": [
+            {
+              "type": "rich_text",
+              "title": "Pain versus impact"
+            }
+          ]
+        },
+        {
+          "type": "knowledge_check",
+          "title": "Spot impact language",
+          "graded": false,
+          "questions": [
+            {
+              "type": "single_select",
+              "question": "Which statement shows business impact?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "module_title": "Final Assessment and Feedback",
+      "module_goal": "Demonstrate readiness and provide course feedback.",
+      "estimated_duration_minutes": 15,
+      "items": [
+        {
+          "type": "assessment",
+          "title": "Discovery Readiness Check",
+          "graded": true,
+          "passing_percentage": 80,
+          "questions": [
+            {
+              "type": "single_select",
+              "question": "Choose the best next response."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "final_feedback_form": {
+    "enabled": true,
+    "placement": "after_final_assessment",
+    "questions": [
+      "How useful was this course for your role?",
+      "What remains unclear?",
+      "How confident are you applying this in your next conversation?"
+    ]
+  },
+  "quality_review": {
+    "self_paced_only": true,
+    "final_module_has_assessment": true,
+    "last_step_is_feedback": true
+  }
+}

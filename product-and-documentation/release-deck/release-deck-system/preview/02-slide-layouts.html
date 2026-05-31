@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Release Deck · Slide layouts</title>
+<link rel="stylesheet" href="../colors_and_type.css?v=2"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #E6E3DE;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    color: #1A1F26; }
+  .wrap { padding: 40px 48px 72px; width: 1400px; margin: 0 auto; box-sizing: border-box; }
+  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .sub { font-size: 15px; color: #4A5260; margin-bottom: 40px; }
+
+  /* Each slide is authored at 1920×1080, then scaled to fit the page column. */
+  .slide-row { margin-bottom: 40px; }
+  .slide-row h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #8A8F98; margin: 0 0 12px; }
+  .frame {
+    width: 1304px; height: 733.5px;   /* 1920×1080 scaled by 0.679 */
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 24px 60px rgba(20,25,40,0.10);
+    background: #FFF;
+  }
+  .stage {
+    width: 1920px; height: 1080px;
+    transform: scale(0.679);
+    transform-origin: top left;
+  }
+  .stage > div { width: 1920px; height: 1080px; }
+  .slide {
+    width: 100%; height: 100%;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .slide * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Slide layouts</h1>
+  <div class="sub">Five slide types, each at authored 1920×1080 scaled to fit. These are the exact components imported by <code>template.html</code>.</div>
+
+  <div class="slide-row">
+    <h2>01 · Cover</h2>
+    <div class="frame"><div class="stage"><div id="s-cover"></div></div></div>
+  </div>
+
+  <div class="slide-row">
+    <h2>02 · Overview</h2>
+    <div class="frame"><div class="stage"><div id="s-overview"></div></div></div>
+  </div>
+
+  <div class="slide-row">
+    <h2>03 · Section divider</h2>
+    <div class="frame"><div class="stage"><div id="s-section"></div></div></div>
+  </div>
+
+  <div class="slide-row">
+    <h2>04 · Feature slide</h2>
+    <div class="frame"><div class="stage"><div id="s-feature"></div></div></div>
+  </div>
+
+  <div class="slide-row">
+    <h2>05 · Closing</h2>
+    <div class="frame"><div class="stage"><div id="s-closing"></div></div></div>
+  </div>
+</div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../slide-components.jsx"></script>
+<script type="text/babel" src="../slide-layouts.jsx"></script>
+
+<script type="text/babel">
+const SAMPLE = {
+  month: 'March', year: '2026',
+  tagline: 'Innovation built around your success',
+  overviewHeadline: 'Your Enablement Just Got Smarter',
+  sections: [
+    { id: 'lnc',  title: 'Learning & Coaching', features: [
+      { title: 'Improved Course Analytics' },
+      { title: 'Add AI Role Plays as Course Elements' },
+      { title: 'Show Analytics Before Submitting a Role Play' },
+    ]},
+    { id: 'dsr',  title: 'Digital Sales Rooms', features: [
+      { title: 'Internal-Only Messaging in DSR Rooms' },
+      { title: 'DSR Activity Tab on the Listing Page' },
+      { title: 'Copy and Paste Tabs Between DSR and Template Hub' },
+    ]},
+    { id: 'lib',  title: 'Library & CMS', features: [
+      { title: 'Add Folders to Views' },
+    ]},
+    { id: 'misc', title: 'Miscellaneous', features: [
+      { title: 'Regenerate AI-Generated Banners' },
+    ]},
+  ],
+};
+
+const sampleFeature = {
+  category: 'LMS',
+  title: 'Improved Course Analytics',
+  summary: 'Coaching reports now include Course Analytics for individual courses — a richer drill-down on where every learner stands.',
+  bullets: [
+    '**Summary Tiles** for an at-a-glance view of course performance.',
+    '**Learner Status Distribution** — Enrolled, In Progress, Overdue, Completed.',
+    '**Pass/Fail Distribution** across the cohort.',
+    '**Course Statistics by Learner** with progress, score, attempts, time.',
+    '**Module Completion Funnel** to see where learners drop off.',
+  ],
+  audience: 'Admin',
+  release: 'Feature-Flag',
+  screenshot: { alt: 'Course Analytics dashboard', caption: 'Coaching → Courses → Analytics' },
+};
+
+ReactDOM.createRoot(document.getElementById('s-cover')).render(
+  <CoverSlide month={SAMPLE.month} year={SAMPLE.year} tagline={SAMPLE.tagline} index={1} total={15} />);
+
+ReactDOM.createRoot(document.getElementById('s-overview')).render(
+  <OverviewSlide sections={SAMPLE.sections} tagline={SAMPLE.overviewHeadline}
+    month={SAMPLE.month} year={SAMPLE.year} featuresCount={8} index={2} total={15} />);
+
+ReactDOM.createRoot(document.getElementById('s-section')).render(
+  <SectionDividerSlide number={1} title="Learning & Coaching" index={3} total={15} />);
+
+ReactDOM.createRoot(document.getElementById('s-feature')).render(
+  <FeatureSlide {...sampleFeature} index={4} total={15} />);
+
+ReactDOM.createRoot(document.getElementById('s-closing')).render(
+  <ClosingSlide month="March 2026" index={15} total={15} />);
+</script>
+</body>
+</html>
