@@ -6,11 +6,20 @@ This folder contains generalized, publish-ready skills organized by use case. Ea
 
 ```text
 Publish/
+  collaboration-and-alignment/
   content-and-communication/
   engineering-and-debugging/
   product-and-documentation/
   sales-and-enablement/
 ```
+
+## Collaboration and Alignment
+
+Cross-functional working-method skills for aligning on decisions, reconciling conflicting plans, and reaching shared understanding before building.
+
+| Skill | Use it for | Zip |
+| --- | --- | --- |
+| [alignment-loop](collaboration-and-alignment/alignment-loop/) | Converging on complex or underspecified decisions through iterative question batches, reconciling conflicting plans/specs, and producing a locked decisions document. | [zip](collaboration-and-alignment/alignment-loop/alignment-loop.zip) |
 
 ## Content and Communication
 
